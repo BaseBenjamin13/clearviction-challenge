@@ -1,8 +1,10 @@
 import React from 'react'
 
-function Header() {
+function Header({ pageTitle }) {
   return (
-    <div>Header</div>
+    <div className="bg-red-300">
+        <h1>{pageTitle}</h1>
+    </div>
   )
 }
 
