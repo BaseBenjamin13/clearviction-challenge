@@ -2,8 +2,8 @@ import React from 'react'
 
 function Header({ pageTitle }) {
   return (
-    <div className="bg-red-300">
-        <h1>{pageTitle}</h1>
+    <div className="">
+        <h1 className="">{pageTitle}</h1>
     </div>
   )
 }
