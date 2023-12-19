@@ -1,33 +1,48 @@
 import React, { useState, useEffect } from 'react';
+import axios from "axios";
 
 import Loading from '../global/Loading';
 import UsersList from "./usersList/UsersList";
-import axios from "axios";
+import ErrorMsg from "../global/ErrorMsg";
 
 function Home() {
 
+    const refresh = () => window.location.reload(true)
+
     const [userData, setUserData] = useState([])
+    const [showErrMsg, setShowErrMsg] = useState(false)
+
+    const handleTryAgain = () => {
+        refresh()
+    }
 
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
-        .then((res) => {
-            console.log(res.data)
-            if(res.data.length >= 1){
-                setUserData(res.data)
-            }else {
-                console.log('no user data');
-            }
-        })
-        .catch(err => console.log(err))
+        axios.get('https://jsonplaceholder.typicode.com/user')
+            .then((res) => {
+                console.log(res.data)
+                if (res.data.length >= 1) {
+                    setUserData(res.data)
+                } else {
+                    console.log('no user data');
+                    setShowErrMsg(true)
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+                setShowErrMsg(true)
+            })
     }, [])
 
     return (
         <div className="mt-[3rem]">
 
             {userData.length <= 0 ?
-                <Loading />
+                showErrMsg ?
+                    <ErrorMsg errMsg="Failed to load user data." onClick={handleTryAgain}/>
+                    :
+                    <Loading />
                 :
-                <UsersList users={userData}/>
+                <UsersList users={userData} />
             }
 
         </div>
