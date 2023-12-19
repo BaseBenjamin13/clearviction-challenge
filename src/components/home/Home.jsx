@@ -9,13 +9,13 @@ function Home() {
 
     const [userData, setUserData] = useState([])
     const [showErrMsg, setShowErrMsg] = useState(false)
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const [userLimit, setUserLimit] = useState(5)
     const [userLimitReached, setUserLimitReached] = useState(false)
 
     const handleTryAgain = () => {
         setIsLoading(true)
-        setTimeout(() => getUserData(setUserData, setShowErrMsg, setIsLoading, userLimit), 2000);
+        setTimeout(() => getUserData(setUserData, setShowErrMsg, setIsLoading, userLimit, setUserLimitReached), 2000);
     }
     const handleLoadMore = () => {
         getUserData(setUserData, setShowErrMsg, setIsLoading, userLimit + 5, setUserLimitReached);
@@ -23,7 +23,7 @@ function Home() {
     }
 
     useEffect(() => {
-        getUserData(setUserData, setShowErrMsg, setIsLoading, userLimit)
+        getUserData(setUserData, setShowErrMsg, setIsLoading, userLimit, setUserLimit)
     }, [])
 
     return (

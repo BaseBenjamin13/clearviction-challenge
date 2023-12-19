@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export function getUserData(setUserData, setShowErrMsg, setIsloading, userLimit, setUserLimitReached) {
+    setIsloading(true)
     axios.get('https://jsonplaceholder.typicode.com/users')
         .then((res) => {
             if (res.data.length >= 1) {
