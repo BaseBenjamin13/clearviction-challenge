@@ -1,9 +1,12 @@
 import axios from "axios";
 
-export function getUserData(setUserData, setShowErrMsg, setIsloading, userLimit, setUserLimitReached) {
-    setIsloading(true)
+import { PropsForGetUserData } from '../types/types';
+
+export function getUserData({setUserData, setShowErrMsg, setIsLoading, userLimit, setUserLimitReached}: PropsForGetUserData ) {
+    setIsLoading(true)
     axios.get('https://jsonplaceholder.typicode.com/users')
         .then((res) => {
+            console.log(res.data)
             if (res.data.length >= 1) {
                 if(userLimit >= res.data.length){
                     setUserData(res.data)
@@ -11,16 +14,16 @@ export function getUserData(setUserData, setShowErrMsg, setIsloading, userLimit,
                 } else{
                     setUserData(res.data.slice(0, userLimit))
                 }
-                setIsloading(false)
+                setIsLoading(false)
             } else {
                 console.log('no user data');
                 setShowErrMsg(true)
-                setIsloading(false)
+                setIsLoading(false)
             }
         })
         .catch((err) => {
             console.log(err)
             setShowErrMsg(true)
-            setIsloading(false)
+            setIsLoading(false)
         })
 }

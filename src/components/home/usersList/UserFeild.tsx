@@ -1,6 +1,7 @@
 import React from 'react'
+import { PropsForUsersField } from '../../../types/types';
 
-function UserFeild({ title, value }) {
+function UserFeild({ title, value }: PropsForUsersField) {
   return (
     <div className="flex justify-center">
         <div className="m-[5px] mr-[0px] shadow-lg p-[10px] rounded-xl ">

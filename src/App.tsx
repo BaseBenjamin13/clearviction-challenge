@@ -1,11 +1,12 @@
+import React from 'react'; 
 import './App.css';
 
-import Header from './components/global/Header.jsx';
-import Home from './components/home/Home.jsx';
+import Header from './components/global/Header';
+import Home from './components/home/Home';
 
 function App() {
 	return (
-		<div className="">
+		<div>
 			<Header pageTitle="Access User Data" />
 
 			<Home />

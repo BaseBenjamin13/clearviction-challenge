@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Loading from '../global/Loading';
 import UsersList from "./usersList/UsersList";
-import ErrorMsg from "../global/ErrorMsg";
+import ErrorDisplay from "../global/ErrorDisplay";
 import { getUserData } from "../../utils/getUserData";
 
 function Home() {
@@ -15,15 +15,37 @@ function Home() {
 
     const handleTryAgain = () => {
         setIsLoading(true)
-        setTimeout(() => getUserData(setUserData, setShowErrMsg, setIsLoading, userLimit, setUserLimitReached), 2000);
+        setTimeout(() => {
+            getUserData({
+                setUserData: setUserData, 
+                setShowErrMsg: setShowErrMsg, 
+                setIsLoading: setIsLoading, 
+                userLimit: userLimit, 
+                setUserLimitReached: setUserLimitReached
+            });
+        }, 2000);
     }
     const handleLoadMore = () => {
-        getUserData(setUserData, setShowErrMsg, setIsLoading, userLimit + 5, setUserLimitReached);
+        console.log('ran')
+        getUserData({
+            setUserData: setUserData, 
+            setShowErrMsg: setShowErrMsg, 
+            setIsLoading: setIsLoading, 
+            userLimit: userLimit + 5, 
+            setUserLimitReached: setUserLimitReached
+        });
         setUserLimit(userLimit + 5)
     }
 
     useEffect(() => {
-        getUserData(setUserData, setShowErrMsg, setIsLoading, userLimit, setUserLimit)
+        getUserData({
+            setUserData: setUserData, 
+            setShowErrMsg: setShowErrMsg, 
+            setIsLoading: setIsLoading, 
+            userLimit: userLimit, 
+            setUserLimitReached: setUserLimitReached
+        });
+        console.log(userData)
     }, [])
 
     return (
@@ -34,7 +56,7 @@ function Home() {
                     <Loading />
                     :
                     showErrMsg || userData.length <= 0 ?
-                        <ErrorMsg errMsg="Failed to load user data." onClick={handleTryAgain} />
+                        <ErrorDisplay errMsg="Failed to load user data." handleTryAgain={handleTryAgain} />
                         :
                         <UsersList 
                             users={userData} 

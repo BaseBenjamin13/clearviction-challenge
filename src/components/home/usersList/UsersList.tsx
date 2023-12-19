@@ -1,8 +1,9 @@
 import React from 'react';
 
+import { PropsForUsersList } from '../../../types/types';
 import UserFeild from './UserFeild';
 
-function UsersList({ users, handleLoadMore, userLimitReached }) {
+function UsersList({ users, handleLoadMore, userLimitReached }: PropsForUsersList) {
     return (
         <div className="mt-[75px]">
             {
