@@ -9,6 +9,13 @@ export default {
         darkBlue: "#2D37A8",
       },
     },
+    screens: {
+      'sm': '640px',
+      'md': '905px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    }
   },
   plugins: [],
 }

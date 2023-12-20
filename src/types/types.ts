@@ -27,9 +27,6 @@ interface userFields {
 }
 export interface PropsForUsersList {
     users: Array<userFields>
-    handleLoadMore: any
-    // handleLoadMore: (userLimit: number) => void
-    userLimitReached: boolean
 }
 export interface PropsForUsersField {
     title: string
@@ -39,15 +36,12 @@ export interface PropsForUsersField {
 export interface PropsForErrorDisplay {
     errMsg: string
     handleTryAgain: any
-    // handleTryAgain: (value: boolean) => void
 }
 
 export interface PropsForGetUserData {
     setUserData: (users: any) => void
     setShowErrMsg: (value: boolean) => void
     setIsLoading: (value: boolean) => void
-    userLimit: number
-    setUserLimitReached: (value: boolean) => void
 }
 
 export interface PropsForHeader {
