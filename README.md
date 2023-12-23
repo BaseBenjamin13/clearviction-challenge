@@ -3,6 +3,8 @@ This application retrieves user data from an api & displays the user data within
 
 ### Deployed AWS Amplify Link: [Live link](https://main.dhao9i8wgbt5g.amplifyapp.com)
 
+### Technologies used: `TypeScript React MUI Axios TailwindCSS`
+
 ## Run this application
 
 - clone this repo (https://github.com/BaseBenjamin13/clearviction-challenge) or create a fork and then clone that fork.
@@ -15,5 +17,5 @@ This application retrieves user data from an api & displays the user data within
  ![large screen display](https://i.imgur.com/8Ixrt8F.png) 
 
  
-## Large screen display
+## Small screen display
  ![small screen display](https://i.imgur.com/qQgAnGA.png) 
